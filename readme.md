@@ -18,8 +18,8 @@ You can add support for the ROG Raikiri Pro on Linux in three ways:
 2) Run the source code directly: `go run rog-raikiri-pro` (it will give you instructions).
 3) Manually copy/remove `./resources/99-xpad-raikiri-pro.rules` to/from `/etc/udev/rules.d/`.
 
-\* _Binaries are available in the [releases](https://github.com/paroj/xpad-raikiri-pro/releases) section, but you can
-also build them yourself with `go build <path>`._
+\* _Binaries are available in the [releases](https://github.com/matheusvilano/rog-raikiri-pro/releases) section, but 
+you can also build them yourself with `go build <path>`._
 
 ## Compatibility
 

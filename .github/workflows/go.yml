@@ -31,7 +31,7 @@ jobs:
       run: go build -v -o ./rog-raikiri-pro ./source
 
     - name: Upload Binary as Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: xpad-rules-binary
         path: ./rog-raikiri-pro

@@ -10,9 +10,6 @@ import (
 	"path/filepath"
 )
 
-// The name of the executable.
-const executableName = "xpad-raikiri-pro"
-
 // The name of the udev rules file containing instructions for adding support for the ROG Raikiri Pro gamepad.
 const rulesFileName = "99-xpad-raikiri-pro.rules"
 

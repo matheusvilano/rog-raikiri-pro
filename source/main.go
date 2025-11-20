@@ -9,6 +9,9 @@ import (
 	"os"
 )
 
+// The name of the executable.
+const executableName = "rog-raikiri-pro"
+
 // Version of the program.
 const version = "v0.1"
 

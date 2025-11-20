@@ -12,6 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v4
 
@@ -27,7 +28,7 @@ jobs:
         fi
 
     - name: Build
-      run: go build -v ./source
+      run: go build -v -o ./xpad-rules ./source
 
     - name: Test
       run: go test -v ./source

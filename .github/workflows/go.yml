@@ -23,7 +23,7 @@ jobs:
     - name: Initialize Go module (if not already initialized)
       run: |
         if [ ! -f go.mod ]; then
-          go mod init my-project-name  # Replace with your module name
+          go mod init rog-raikiri-pro
         fi
 
     - name: Build

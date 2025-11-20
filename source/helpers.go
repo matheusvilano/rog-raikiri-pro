@@ -48,6 +48,7 @@ func add() error {
 	if err != nil {
 		return fmt.Errorf("could not open source file: %w", err)
 	}
+
 	defer func(sourceFile *os.File) {
 		err := sourceFile.Close()
 		if err != nil {
@@ -59,10 +60,11 @@ func add() error {
 	if err != nil {
 		return fmt.Errorf("could not create destination file: %w", err)
 	}
+
 	defer func(destinationFile *os.File) {
 		err := destinationFile.Close()
 		if err != nil {
-
+			panic(err)
 		}
 	}(destinationFile)
 
@@ -93,5 +95,17 @@ func remove() error {
 
 	fmt.Println("Successfully removed support for the ROG Raikiri Pro gamepad.")
 	fmt.Println("You will likely need to restart your computer for the changes to take effect.")
+	return nil
+}
+
+// Check if support for the Raikiri Pro gamepad is set up.
+func status() error {
+
+	filePath := filepath.Join(rulesTargetDir, rulesFileName)
+	if _, err := os.Stat(filePath); os.IsNotExist(err) {
+		fmt.Println("Support for the ROG Raikiri Pro gamepad is not set up.")
+	}
+
+	fmt.Println("Support for the ROG Raikiri Pro gamepad is set up.")
 	return nil
 }

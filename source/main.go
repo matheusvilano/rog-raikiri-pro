@@ -13,7 +13,7 @@ import (
 const executableName = "rog-raikiri-pro"
 
 // Version of the program.
-const version = "v0.1"
+const version = "v0.2"
 
 // Entry point.
 func main() {
@@ -29,16 +29,24 @@ func main() {
 		return
 	}
 
+	// User MUST have sudo/admin privileges, or the command will [likely] fail.
+
 	switch args[0] {
 
-	case "add": // Ensure the user has sudo/admin privileges
+	case "add":
 		if err := add(); err != nil {
 			fmt.Println("Error: ", err)
 			os.Exit(1)
 		}
 
-	case "remove": // Ensure the user has sudo/admin privileges
+	case "remove":
 		if err := remove(); err != nil {
+			fmt.Println("Error: ", err)
+			os.Exit(1)
+		}
+
+	case "status":
+		if err := status(); err != nil {
 			fmt.Println("Error: ", err)
 			os.Exit(1)
 		}

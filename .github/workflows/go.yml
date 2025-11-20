@@ -10,7 +10,6 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -20,6 +19,12 @@ jobs:
       uses: actions/setup-go@v4
       with:
         go-version: '1.25'
+
+    - name: Initialize Go module (if not already initialized)
+      run: |
+        if [ ! -f go.mod ]; then
+          go mod init my-project-name  # Replace with your module name
+        fi
 
     - name: Build
       run: go build -v ./source

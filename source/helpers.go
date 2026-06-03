@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 )
 
-// The name of the udev rules file containing instructions for adding support for the ROG Raikiri Pro gamepad.
+// The name of the udev rules file containing instructions for adding support for ROG Raikiri gamepads.
 const rulesFileName = "99-xpad-raikiri-pro.rules"
 
 // The directory where the udev rules file is located.
@@ -23,9 +23,9 @@ const rulesTargetDir = "/etc/udev/rules.d/"
 func help() {
 	fmt.Println("Usage:")
 	fmt.Println("  ", executableName, "         // Display instructions")
-	fmt.Println("  ", executableName, "add      // Add support for the ROG Raikiri Pro gamepad")
-	fmt.Println("  ", executableName, "remove   // Remove support for the ROG Raikiri Pro gamepad")
-	fmt.Println("  ", executableName, "status   // Check if support for the ROG Raikiri Pro gamepad is set up")
+	fmt.Println("  ", executableName, "add      // Add support for ROG Raikiri gamepads")
+	fmt.Println("  ", executableName, "remove   // Remove support for ROG Raikiri gamepads")
+	fmt.Println("  ", executableName, "status   // Check if support for ROG Raikiri gamepads is set up")
 	fmt.Println("")
 	fmt.Println("Notes:")
 	fmt.Println("   Support is added/removed by creating/deleting a", rulesFileName, "file in", rulesTargetDir)
@@ -33,7 +33,7 @@ func help() {
 	fmt.Println("   You will likely need to restart your computer for the changes to take effect")
 }
 
-// Add support for the Raikiri Pro gamepad by copying the "99-xpad-raikiri-pro.rules" file to "/etc/udev/rules.d/".
+// Add support for Raikiri gamepads by copying the "99-xpad-raikiri-pro.rules" file to "/etc/udev/rules.d/".
 func add() error {
 
 	workingDir, err := os.Getwd()
@@ -73,12 +73,12 @@ func add() error {
 		return fmt.Errorf("failed to copy file: %w", err)
 	}
 
-	fmt.Println("Successfully [re]added support for the ROG Raikiri Pro gamepad.")
+	fmt.Println("Successfully [re]added support for ROG Raikiri gamepads.")
 	fmt.Println("You will likely need to restart your computer for the changes to take effect.")
 	return nil
 }
 
-// Remove support for the Raikiri Pro gamepad by deleting the "99-xpad-raikiri-pro.rules" file at "/etc/udev/rules.d/".
+// Remove support for Raikiri gamepads by deleting the "99-xpad-raikiri-pro.rules" file at "/etc/udev/rules.d/".
 func remove() error {
 
 	filePath := filepath.Join(rulesTargetDir, rulesFileName)
@@ -93,19 +93,19 @@ func remove() error {
 		return fmt.Errorf("failed to remove the file: %w", err)
 	}
 
-	fmt.Println("Successfully removed support for the ROG Raikiri Pro gamepad.")
+	fmt.Println("Successfully removed support for ROG Raikiri gamepads.")
 	fmt.Println("You will likely need to restart your computer for the changes to take effect.")
 	return nil
 }
 
-// Check if support for the Raikiri Pro gamepad is set up.
+// Check if support for Raikiri gamepads is set up.
 func status() error {
 
 	filePath := filepath.Join(rulesTargetDir, rulesFileName)
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
-		fmt.Println("Support for the ROG Raikiri Pro gamepad is not set up.")
+		fmt.Println("Support for ROG Raikiri gamepads is not set up.")
 	}
 
-	fmt.Println("Support for the ROG Raikiri Pro gamepad is set up.")
+	fmt.Println("Support for ROG Raikiri gamepads is set up.")
 	return nil
 }
